@@ -7,5 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class Listing extends Model
 {
-  use HasFactory;
+    use HasFactory;
+    protected $fillable = [
+        'city',
+        'baths',
+        'beds',
+        'street',
+        'neighborhood',
+        'code',
+        'area',
+        'price',
+    ];
 }
