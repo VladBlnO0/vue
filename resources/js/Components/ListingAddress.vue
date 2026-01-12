@@ -8,10 +8,8 @@ defineProps({
 
 <template>
   <span>
-    {{ listing.title }}
+    {{ listing.street }}
+    {{ listing.street_num }},
     {{ listing.city }}
-    {{ listing.baths }}
-    {{ listing.beds }}
-    {{ listing.price }}
   </span>
 </template>

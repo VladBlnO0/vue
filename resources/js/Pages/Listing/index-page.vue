@@ -2,6 +2,8 @@
 import { Link } from '@inertiajs/vue3';
 import ListingAddress from '@/Components/ListingAddress.vue';
 import Box from "@/Components/UI/Box.vue";
+import ListingSpace from '@/Components/ListingSpace.vue';
+import Price from '@/Components/Price.vue';
 
 defineProps({
   listings: {
@@ -16,7 +18,11 @@ defineProps({
 
       <div>
         <Link :href="route('listing.show', listing.id)">
-          <ListingAddress :listing="listing" />
+          <Price :price="listing.price" class="text-xl font-bold" />
+          &nbsp;
+          <Price :price="listing.price" :locales="'ja-JP'" :currency="'JPY'" class="text-xl font-bold" />
+          <ListingSpace :listing="listing" class="text-lg" />
+          <ListingAddress :listing="listing" class="text-gray-400" />
         </Link>
       </div>
 
@@ -30,5 +36,4 @@ defineProps({
 
     </Box>
   </div>
-
 </template>

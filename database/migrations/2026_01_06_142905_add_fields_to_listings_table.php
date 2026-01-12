@@ -18,7 +18,7 @@ return new class extends Migration {
       $table->tinyText('city');
       $table->tinyText('code');
       $table->tinyText('street');
-      $table->tinyText('neighborhood');
+      $table->unsignedInteger('street_num');
 
       $table->unsignedInteger('price');
     });
@@ -36,7 +36,7 @@ return new class extends Migration {
       'city',
       'code',
       'street',
-      'neighborhood',
+      'street_num',
       'price',
     ]);
   }

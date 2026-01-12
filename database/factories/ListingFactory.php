@@ -23,7 +23,7 @@ class ListingFactory extends Factory
       'city' => fake()->city(),
       'code' => fake()->postcode(),
       'street' => fake()->streetName(),
-      'neighborhood' => fake()->word(),
+      'street_num' => fake()->numberBetween(1, 200),
       'price' => fake()->numberBetween(10_000, 1_000_000)
     ];
   }
