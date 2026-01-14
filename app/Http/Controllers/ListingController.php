@@ -4,10 +4,16 @@ namespace App\Http\Controllers;
 
 use App\Models\Listing;
 use Illuminate\Http\Request;
-use Termwind\Components\Li;
 
-class ListingController extends Controller
+class ListingController extends \Illuminate\Routing\Controller
 {
+  public function __construct()
+  {
+    $this->middleware('auth')->except([
+      'index',
+      'show'
+    ]);
+  }
   /**
    * Display a listing of the resource.
    */
@@ -102,7 +108,7 @@ class ListingController extends Controller
    */
   public function destroy(Listing $listing)
   {
-    $listing->delete();
+    Listing::destroy($listing->id);
 
     return redirect()->back()
       ->with('success', 'Listing deleted successfully!');
