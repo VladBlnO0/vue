@@ -7,17 +7,27 @@ use Illuminate\Database\Seeder;
 
 class DatabaseSeeder extends Seeder
 {
-  use WithoutModelEvents;
+    use WithoutModelEvents;
 
-  /**
-   * Seed the application's database.
-   */
-  public function run(): void
-  {
-    \App\Models\User::factory()->create([
-      'name' => 'Bob',
-      'email' => 'bob@example.com',
-    ]);
-    \App\Models\Listing::factory(20)->create();
-  }
+    /**
+     * Seed the application's database.
+     */
+    public function run(): void
+    {
+        \App\Models\User::factory()->create([
+            'name' => 'Bob',
+            'email' => 'bob@example.com',
+            'is_admin' => true,
+        ]);
+        \App\Models\User::factory()->create([
+            'name' => 'Bob2',
+            'email' => 'bob2@example.com',
+        ]);
+        \App\Models\Listing::factory(10)->create([
+            'user_id' => 1,
+        ]);
+        \App\Models\Listing::factory(10)->create([
+            'user_id' => 2,
+        ]);
+    }
 }

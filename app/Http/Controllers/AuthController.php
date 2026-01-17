@@ -8,31 +8,31 @@ use Illuminate\Support\Facades\Auth;
 
 class AuthController extends Controller
 {
-  public function create()
-  {
-    return inertia('Auth/Login');
-  }
-  public function store(Request $request)
-  {
-    if (
-      !Auth::attempt($request->validate([
-        'email' => 'required|email|string',
-        'password' => 'required|string'
-      ]), true)
-    ) {
-      throw ValidationException::withMessages([
-        'email' => 'The credentials are incorrect'
-      ]);
+    public function create()
+    {
+        return inertia('Auth/Login');
     }
-    $request->session()->regenerate();
-    return redirect()->intended('/listing');
-  }
-  public function destroy(Request $request)
-  {
-    Auth::logout();
-    $request->session()->invalidate();
-    $request->session()->regenerateToken();
+    public function store(Request $request)
+    {
+        if (
+            !Auth::attempt($request->validate([
+                'email' => 'required|email|string',
+                'password' => 'required|string'
+            ]), true)
+        ) {
+            throw ValidationException::withMessages([
+                'email' => 'The credentials are incorrect'
+            ]);
+        }
+        $request->session()->regenerate();
+        return redirect()->intended('/listing');
+    }
+    public function destroy(Request $request)
+    {
+        Auth::logout();
+        $request->session()->invalidate();
+        $request->session()->regenerateToken();
 
-    return redirect()->route('listing.index');
-  }
+        return redirect()->route('listing.index');
+    }
 }

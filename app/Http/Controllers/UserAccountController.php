@@ -8,20 +8,20 @@ use Illuminate\Support\Facades\Auth;
 
 class UserAccountController extends Controller
 {
-  public function create()
-  {
-    return inertia('UserAccount/CreatePage');
-  }
-  public function store(Request $request)
-  {
-    $user = User::create($request->validate([
-      'name' => 'required',
-      'email' => 'required|email|unique:users',
-      'password' => 'required|min:8|confirmed',
-    ]));
-    Auth::login($user);
+    public function create()
+    {
+        return inertia('UserAccount/CreatePage');
+    }
+    public function store(Request $request)
+    {
+        $user = User::create($request->validate([
+            'name' => 'required',
+            'email' => 'required|email|unique:users',
+            'password' => 'required|min:8|confirmed',
+        ]));
+        Auth::login($user);
 
-    return redirect()->route('listing.index')
-      ->with('success', 'Account created successfully.');
-  }
+        return redirect()->route('listing.index')
+            ->with('success', 'Account created successfully.');
+    }
 }
