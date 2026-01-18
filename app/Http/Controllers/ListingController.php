@@ -3,12 +3,13 @@
 namespace App\Http\Controllers;
 
 use App\Models\Listing;
-use Illuminate\Http\Request;
 use Illuminate\Foundation\Auth\Access\AuthorizesRequests;
+use Illuminate\Http\Request;
 
 class ListingController extends \Illuminate\Routing\Controller
 {
     use AuthorizesRequests;
+
     public function __construct()
     {
         $this->middleware('auth')->except([
@@ -26,17 +27,9 @@ class ListingController extends \Illuminate\Routing\Controller
         return inertia(
             'Listing/IndexPage',
             [
-                'listings' => Listing::all(),
+                'listings' => Listing::orderByDesc('created_at')->paginate(9),
             ]
         );
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        return inertia('Listing/CreatePage');
     }
 
     /**
@@ -59,6 +52,14 @@ class ListingController extends \Illuminate\Routing\Controller
 
         return redirect()->route('listing.index')
             ->with('success', 'Listing created successfully!');
+    }
+
+    /**
+     * Show the form for creating a new resource.
+     */
+    public function create()
+    {
+        return inertia('Listing/CreatePage');
     }
 
     /**

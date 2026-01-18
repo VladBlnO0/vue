@@ -23,6 +23,7 @@
   },
   "dependencies": {
     "@inertiajs/vue3": "^2.3.8",
+    "prettier": "^3.8.0",
     "vue": "^3.5.26"
   }
 }
