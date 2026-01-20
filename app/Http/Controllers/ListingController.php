@@ -12,10 +12,6 @@ class ListingController extends \Illuminate\Routing\Controller
 
     public function __construct()
     {
-        $this->middleware('auth')->except([
-            'index',
-            'show',
-        ]);
         $this->authorizeResource(Listing::class, 'listing');
     }
 
@@ -119,16 +115,5 @@ class ListingController extends \Illuminate\Routing\Controller
 
         return redirect()->route('listing.index')
             ->with('success', 'Listing updated successfully!');
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Listing $listing)
-    {
-        Listing::destroy($listing->id);
-
-        return redirect()->back()
-            ->with('success', 'Listing deleted successfully!');
     }
 }
