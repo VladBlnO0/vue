@@ -39,13 +39,13 @@ class HandleInertiaRequests extends Middleware
             parent::share($request),
             [
                 'flash' => [
-                    'success' => $request->session()->get('success')
+                    'success' => $request->session()->get('success'),
                 ],
                 'user' => $request->user() ? [
                     'id' => $request->user()->id,
                     'name' => $request->user()->name,
                     'email' => $request->user()->email,
-                ] : null
+                ] : null,
             ]
         );
     }

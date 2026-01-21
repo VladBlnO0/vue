@@ -8,14 +8,21 @@ defineProps({
 
 <template>
   <div class="flex gap-1">
-    <Link
-      v-for="(link, index) in links"
-      :key="index"
-      :class="{ 'bg-indigo-500 dark:bg-indigo-800 text-gray-300': link.active }"
-      :href="link.url ?? 'null'"
-      class="py-2 px-4 rounded-md"
-      v-html="link.label"
-    />
+    <template v-for="(link, index) in links" :key="index">
+      <Link
+        v-if="link.url"
+        :class="{ 'bg-blue-500 dark:bg-blue-800 text-white': link.active }"
+        :href="link.url"
+        class="py-2 px-4 rounded-md"
+        v-html="link.label"
+      />
+      <button
+        v-else
+        class="py-2 px-4 rounded-md text-gray-500 cursor-not-allowed"
+        disabled
+        v-html="link.label"
+      />
+    </template>
   </div>
 </template>
 

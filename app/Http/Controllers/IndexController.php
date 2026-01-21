@@ -2,9 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Listing;
-use App\Models\User;
-
 class IndexController extends Controller
 {
     public function index()

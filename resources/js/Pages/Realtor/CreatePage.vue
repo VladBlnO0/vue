@@ -1,32 +1,28 @@
 <script setup>
-import { useForm } from '@inertiajs/vue3';
-
-const props = defineProps({
-  listing: Object,
-});
+import { useForm } from "@inertiajs/vue3";
 
 const form = useForm({
-  beds: props.listing.beds,
-  baths: props.listing.baths,
-  area: props.listing.area,
-  city: props.listing.city,
-  code: props.listing.code,
-  street: props.listing.street,
-  street_num: props.listing.street_num,
-  price: props.listing.price,
+  beds: 0,
+  baths: 0,
+  area: 0,
+  city: null,
+  code: null,
+  street: null,
+  street_num: null,
+  price: 0,
 });
 
-function update() {
-  form.put(route('listing.update', props.listing.id));
+function create() {
+  form.post(route("realtor.listing.store"));
 }
 </script>
 
 <template>
-  <form @submit.prevent="update">
+  <form @submit.prevent="create">
     <div class="grid grid-cols-6 gap-4">
       <div class="col-span-2">
         <label class="label">Beds</label>
-        <input type="text" v-model.number="form.beds" class="input" />
+        <input v-model.number="form.beds" class="input" type="text" />
         <div v-if="form['errors'].beds" class="input-error">
           {{ form.errors.beds }}
         </div>
@@ -34,7 +30,7 @@ function update() {
 
       <div class="col-span-2">
         <label class="label">Baths</label>
-        <input type="text" v-model.number="form.baths" class="input" />
+        <input v-model.number="form.baths" class="input" type="text" />
         <div v-if="form.errors.baths" class="input-error">
           {{ form.errors.baths }}
         </div>
@@ -42,7 +38,7 @@ function update() {
 
       <div class="col-span-2">
         <label class="label">Area</label>
-        <input type="text" v-model.number="form.area" class="input" />
+        <input v-model.number="form.area" class="input" type="text" />
         <div v-if="form.errors.area" class="input-error">
           {{ form.errors.area }}
         </div>
@@ -50,7 +46,7 @@ function update() {
 
       <div class="col-span-4">
         <label class="label">City</label>
-        <input type="text" v-model="form.city" class="input" />
+        <input v-model="form.city" class="input" type="text" />
         <div v-if="form.errors.city" class="input-error">
           {{ form.errors.city }}
         </div>
@@ -58,7 +54,7 @@ function update() {
 
       <div class="col-span-2">
         <label class="label">Code</label>
-        <input type="text" v-model="form.code" class="input" />
+        <input v-model="form.code" class="input" type="text" />
         <div v-if="form.errors.code" class="input-error">
           {{ form.errors.code }}
         </div>
@@ -66,7 +62,7 @@ function update() {
 
       <div class="col-span-4">
         <label class="label">Street</label>
-        <input type="text" v-model="form.street" class="input" />
+        <input v-model="form.street" class="input" type="text" />
         <div v-if="form.errors.street" class="input-error">
           {{ form.errors.street }}
         </div>
@@ -74,7 +70,7 @@ function update() {
 
       <div class="col-span-2">
         <label class="label">Street Number</label>
-        <input type="text" v-model.number="form.street_num" class="input" />
+        <input v-model.number="form.street_num" class="input" type="text" />
         <div v-if="form.errors.street_num" class="input-error">
           {{ form.errors.street_num }}
         </div>
@@ -82,25 +78,15 @@ function update() {
 
       <div class="col-span-6">
         <label class="label">Price</label>
-        <input type="text" v-model.number="form.price" class="input" />
+        <input v-model.number="form.price" class="input" type="text" />
         <div v-if="form.errors.price" class="input-error">
           {{ form.errors.price }}
         </div>
       </div>
 
       <div class="btn-primary">
-        <button type="submit">Edit</button>
+        <button type="submit">Create</button>
       </div>
     </div>
   </form>
 </template>
-
-<style scoped>
-label {
-  margin-right: 2em;
-}
-
-div {
-  padding: 2px
-}
-</style>

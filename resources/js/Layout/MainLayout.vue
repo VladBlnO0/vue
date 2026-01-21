@@ -25,7 +25,7 @@ const user = computed(() => page.props.user);
           <Link :href="route('realtor.listing.index')" class="text-gray-500">{{
             user.name
           }}</Link>
-          <Link :href="route('listing.create')" class="btn-primary">
+          <Link :href="route('realtor.listing.create')" class="btn-primary">
             Create Listing
           </Link>
           <div>

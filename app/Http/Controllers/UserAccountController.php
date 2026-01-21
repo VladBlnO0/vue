@@ -12,6 +12,7 @@ class UserAccountController extends Controller
     {
         return inertia('UserAccount/CreatePage');
     }
+
     public function store(Request $request)
     {
         $user = User::create($request->validate([

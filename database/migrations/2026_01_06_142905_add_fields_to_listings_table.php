@@ -4,40 +4,41 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-return new class extends Migration {
-  /**
-   * Run the migrations.
-   */
-  public function up(): void
-  {
-    Schema::table('listings', function (Blueprint $table) {
-      $table->unsignedTinyInteger('beds');
-      $table->unsignedTinyInteger('baths');
-      $table->unsignedSmallInteger('area');
+return new class extends Migration
+{
+    /**
+     * Run the migrations.
+     */
+    public function up(): void
+    {
+        Schema::table('listings', function (Blueprint $table) {
+            $table->unsignedTinyInteger('beds');
+            $table->unsignedTinyInteger('baths');
+            $table->unsignedSmallInteger('area');
 
-      $table->tinyText('city');
-      $table->tinyText('code');
-      $table->tinyText('street');
-      $table->unsignedInteger('street_num');
+            $table->tinyText('city');
+            $table->tinyText('code');
+            $table->tinyText('street');
+            $table->unsignedInteger('street_num');
 
-      $table->unsignedInteger('price');
-    });
-  }
+            $table->unsignedInteger('price');
+        });
+    }
 
-  /**
-   * Reverse the migrations.
-   */
-  public function down(): void
-  {
-    Schema::dropColumns('listings', [
-      'beds',
-      'baths',
-      'area',
-      'city',
-      'code',
-      'street',
-      'street_num',
-      'price',
-    ]);
-  }
+    /**
+     * Reverse the migrations.
+     */
+    public function down(): void
+    {
+        Schema::dropColumns('listings', [
+            'beds',
+            'baths',
+            'area',
+            'city',
+            'code',
+            'street',
+            'street_num',
+            'price',
+        ]);
+    }
 };
