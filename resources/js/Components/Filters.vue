@@ -15,6 +15,7 @@ const filterForm = useForm({
 });
 
 const filter = () => {
+  // eslint-disable-next-line no-undef
   filterForm.get(route("listing.index"), {
     preserveState: true,
     preserveScroll: true,

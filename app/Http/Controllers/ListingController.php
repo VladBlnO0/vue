@@ -37,7 +37,6 @@ class ListingController extends \Illuminate\Routing\Controller
         );
     }
 
-
     /**
      * Display the specified resource.
      */
@@ -52,6 +51,4 @@ class ListingController extends \Illuminate\Routing\Controller
             ]
         );
     }
-
-
 }

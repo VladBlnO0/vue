@@ -7,6 +7,7 @@ const form = useForm({
 })
 
 function login() {
+  // eslint-disable-next-line no-undef
   form.post(route('login.store'));
 }
 </script>
@@ -15,17 +16,17 @@ function login() {
   <form @submit.prevent="login">
     <div class="mx-auto w-1/2">
       <div>
-        <label class="label" id="email">Email</label>
+        <label id="email" class="label">Email</label>
 
-        <input type="text" id="email" class="input" v-model="form.email" />
-        <div class="input-error" v-if="form.errors.email">{{ form.errors.email }}</div>
+        <input id="email" v-model="form.email" class="input" type="text" />
+        <div v-if="form.errors.email" class="input-error">{{ form.errors.email }}</div>
       </div>
 
       <div class="mt-4">
-        <label class="label" id="password">Password</label>
+        <label id="password" class="label">Password</label>
 
-        <input type="password" id="password" class="input" v-model="form.password" />
-        <div class="input-error" v-if="form.errors.password">{{ form.errors.password }}</div>
+        <input id="password" v-model="form.password" class="input" type="password" />
+        <div v-if="form.errors.password" class="input-error">{{ form.errors.password }}</div>
       </div>
 
       <div class="mt-4">

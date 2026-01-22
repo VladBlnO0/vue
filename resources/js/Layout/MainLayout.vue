@@ -17,8 +17,8 @@ const user = computed(() => page.props.user);
           <Link :href="route('listing.index')"> Listing </Link>
         </div>
 
-        <div class="text-xl text-indigo-600 dark:text-indigo-300">
-          <Link :href="route('listing.index')">BuyNowPayLater</Link>
+        <div class="text-xl text-blue-600 dark:text-blue-300">
+          <Link :href="route('listing.index')">Estate For Sale</Link>
         </div>
 
         <div v-if="user" class="flex items-center gap-4">

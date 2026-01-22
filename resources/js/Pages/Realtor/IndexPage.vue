@@ -7,12 +7,6 @@ import { Link } from "@inertiajs/vue3";
 import RealtorFilters from "@/Pages/Realtor/Index/Components/RealtorFilters.vue";
 import Pagination from "@/Components/UI/Pagination.vue";
 
-/**
- * @typedef {Object} Listing
- * @property {number} id
- * @property {number} price
- * @property {string|null} deleted_at
- */
 defineProps({
   listings: Object,
   filters: Object,

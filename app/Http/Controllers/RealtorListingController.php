@@ -91,6 +91,9 @@ class RealtorListingController extends Controller
             ->with('success', 'Listing updated successfully!');
     }
 
+    /**
+     * @throws \Throwable
+     */
     public function destroy(Listing $listing)
     {
         $listing->deleteOrFail();
@@ -102,6 +105,7 @@ class RealtorListingController extends Controller
     public function restore(Listing $listing)
     {
         $listing->restore();
+
         return redirect()->back()->with('success', 'Restored!');
     }
 }

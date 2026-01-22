@@ -13,6 +13,7 @@ const form = useForm({
 });
 
 function create() {
+  // eslint-disable-next-line no-undef
   form.post(route("realtor.listing.store"));
 }
 </script>

@@ -40,14 +40,13 @@ const filterForm = reactive({
 
 watch(
   filterForm,
-  debounce(
-    () =>
-      router.get(route("realtor.listing.index"), filterForm, {
-        preserveState: true,
-        preserveScroll: true,
-      }),
-    500,
-  ),
+  debounce(() => {
+    // eslint-disable-next-line no-undef
+    router.get(route("realtor.listing.index"), filterForm, {
+      preserveState: true,
+      preserveScroll: true,
+    });
+  }, 500),
 );
 </script>
 

@@ -1,49 +1,66 @@
 <script setup>
-import { useForm, Link } from '@inertiajs/vue3';
-import { route } from '@/ziggy';
+import { useForm, Link } from "@inertiajs/vue3";
 
 const form = useForm({
   name: null,
   email: null,
   password: null,
   password_confirmation: null,
-})
+});
 
 function register() {
-  form.post(route('user-account.store'));
+  // eslint-disable-next-line no-undef
+  form.post(route("user-account.store"));
 }
 </script>
 
 <template>
   <form @submit.prevent="register">
     <div class="mx-auto w-1/2">
-
       <div>
-        <label class="label" id="name">Name</label>
+        <label id="name" class="label">Name</label>
 
-        <input type="text" id="name" class="input" v-model="form.name" />
-        <div class="input-error" v-if="form.errors.name">{{ form.errors.name }}</div>
+        <input id="name" v-model="form.name" class="input" type="text" />
+        <div v-if="form.errors.name" class="input-error">
+          {{ form.errors.name }}
+        </div>
       </div>
 
       <div class="mt-4">
-        <label class="label" id="email">Email</label>
+        <label id="email" class="label">Email</label>
 
-        <input type="text" id="email" class="input" v-model="form.email" />
-        <div class="input-error" v-if="form.errors.email">{{ form.errors.email }}</div>
+        <input id="email" v-model="form.email" class="input" type="text" />
+        <div v-if="form.errors.email" class="input-error">
+          {{ form.errors.email }}
+        </div>
       </div>
 
       <div class="mt-4">
-        <label class="label" id="password">Password</label>
+        <label id="password" class="label">Password</label>
 
-        <input type="password" id="password" class="input" v-model="form.password" />
-        <div class="input-error" v-if="form.errors.password">{{ form.errors.password }}</div>
+        <input
+          id="password"
+          v-model="form.password"
+          class="input"
+          type="password"
+        />
+        <div v-if="form.errors.password" class="input-error">
+          {{ form.errors.password }}
+        </div>
       </div>
 
       <div class="mt-4">
-        <label class="label" id="password_confirmation">Confirm Password</label>
+        <label id="password_confirmation" class="label">Confirm Password</label>
 
-        <input type="password" id="password_confirmation" class="input" v-model="form.password_confirmation" />
-        <div class="input-error" v-if="form.errors.password_confirmation">{{ form.errors.password_confirmation }}</div>
+        <input
+          id="password_confirmation"
+          v-model="form.password_confirmation"
+          class="input"
+          type="password"
+        />
+        <div v-if="form.errors.password_confirmation" class="input-error">
+          {{ form.errors.password_confirmation }}
+        </div>
       </div>
 
       <div class="mt-4">
@@ -53,7 +70,6 @@ function register() {
       <div class="mt-2 text-center">
         <Link :href="route('login')" class="text-gray-500 text-sm">Login</Link>
       </div>
-
     </div>
   </form>
 </template>

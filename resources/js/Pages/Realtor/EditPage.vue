@@ -17,6 +17,7 @@ const form = useForm({
 });
 
 function update() {
+  // eslint-disable-next-line no-undef
   form.put(route("listing.update", props.listing.id));
 }
 </script>
